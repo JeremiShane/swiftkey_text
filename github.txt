@@ -1,0 +1,15 @@
+
+
+http://kbroman.org/github_tutorial/pages/init.html
+
+git init ## inside directory to be used as repo
+
+git add .	adds all new files
+git add -u	updates tracking for files that changed names or deleted
+git add -A 	does both of the previous commands
+
+git commit -m "notes message"
+
+git remote add origin git@github.com:username/new_repo
+
+git push -u origin master

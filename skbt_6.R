@@ -324,6 +324,16 @@ fivegram <- ngram(str, n=5)
 fiveFreq <- get.phrasetable(fivegram)
 
 save(str, twoFreq, threeFreq, fourFreq, fourFreq, fiveFreq, file="skbt_nFreqs.RData")
+load("skbt_nFreqs.RData")
+twoF <- head(twoFreq, 100000)
+threeF <- head(threeFreq, 100000)
+fourF <- head(fourFreq, 100000)
+fiveF <- head(fiveFreq, 100000)
+
+tw <- separate(twoF, ngrams, c("one", "two"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
+thre <- separate(threeF, ngrams, c("one", "two", "three"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
+fou <- separate(fourF, ngrams, c("one", "two", "three", "four"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
+fiv <- separate(fiveF, ngrams, c("one", "two", "three", "four", "five"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
 
 two <- separate(twoFreq, ngrams, c("one", "two"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
 three <- separate(threeFreq, ngrams, c("one", "two", "three"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
@@ -331,3 +341,8 @@ four <- separate(fourFreq, ngrams, c("one", "two", "three", "four"), sep="[ |\t]
 five <- separate(fiveFreq, ngrams, c("one", "two", "three", "four", "five"), sep="[ |\t]+", remove=FALSE, extra="warn", fill="warn")
 
 save(two, three, four, five, file="skbt_nb.RData")
+
+save(tw, file="skbt_two.RData")
+save(thre, file="skbt_three.RData")
+save(fou, file="skbt_four.RData")
+save(fiv, file="skbt_fiv.RData")
